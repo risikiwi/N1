@@ -54,7 +54,7 @@ def gd(eta, epochs):
 
     return a
     
-a = gd(0.05, 1000)
+a = gd(0.05, 2000)
 print(np.column_stack((y_and, a.round())))
 
 
