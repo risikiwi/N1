@@ -40,19 +40,19 @@ Conclusion - Edit gd in processor.py to train with batches of different sizes to
 Learning rate = 1.0, epoch = 100, batch size = 100
 Appearance - Network Reaches Expected Accuracy on testing. Higher than expected on Training
 <img src="https://i.postimg.cc/9QvRFjsP/Screenshot-2026-10-13-at-14-30-42.png" alt="Displays an image of training loss" width="400">
-Analyze - Mild overfitting on testing data
+Analyze - Mild overfitting on training data
 Conclusion - Less epochs, larger batch_size to decrease # of updates.
 
 Learning rate = 1.0, epoch = 50, batch size = 128
 Appearance - Network Reaches Expected Accuracy on testing. Higher than expected on Training, but improved slightly
-Analyze - Potential overfitting on testing data
+Analyze - Potential overfitting on training data
 Conclusion - Possible fixes: Stop when test accuracy plateaus/ regularization (Next steps)
 
 ## What I learned
 One hot encoding - each label is vector with a 1 @ its class index, so each output neuron maps to a digit
 Underfit vs Overfit
 - Underfitting when network doesn't do well on either training nor testing data. Occurs when the chosen algorithm is too SIMPLE for the dataset/ or is undertrained
-- Overfitting when network does well on training but not testing data. Occurs when the chosen algorithm is too COMPLICATED for the dataset
+- Overfitting when network does well on training but not testing data. Occurs when the chosen algorithm is too COMPLICATED/ overtrained for the dataset
 - Bias - missing features, simple assumptions
 - Variance - extreme sensitivity to overall irrelevant noise
 Train in batch. Instead of running a ton of epochs and updating params every epoch---update params in batches per epoch. Speeding up the 
