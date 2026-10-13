@@ -44,7 +44,7 @@ def backprop(a, w):
         db[layer] = np.mean(dz, axis=0, keepdims=True)
         if layer > 0: # back to front layer, calculate dw, db based on output
             da = dz @ w[layer].T #
-            dz = da * a[layer] * (1-a[layer])
+            dz = da * a[layer] * (1-a[layer]) # dL/dz2 * dz2/da1 * da1/dz1
     return dw, db
 
 def gd(eta, epochs):
