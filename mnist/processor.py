@@ -11,18 +11,18 @@ class neural_network(object):
 
 
     @staticmethod
-    def loss(self, a, y):
+    def loss(a, y):
         return -np.mean((y * np.log(a[-1]) + (1.0 - y) * np.log(1.0 - a[-1])))
 
 
     @staticmethod
-    def pre_activation(self, x, w, b):
+    def pre_activation(x, w, b):
         z = x@w+b
         return z
 
 
     @staticmethod
-    def sigmoid(self, z):
+    def sigmoid(z):
         return 1.0/ (1+np.exp(-z))
 
 
@@ -52,7 +52,7 @@ class neural_network(object):
         w = self.weights
         b = self.biases
         for epoch in range(epochs):
-            a = self.feedforward(x)
+            a = self.feed_forward(x)
             dw, db = self.backprop(a, x, y)
             for layer in range(self.layers-1):
                 w[layer] -= eta * dw[layer]
