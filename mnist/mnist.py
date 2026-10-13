@@ -29,9 +29,9 @@ nn = neural_network([784, 64, 10])
 initial_loss = nn.loss(nn.feed_forward(X_train), Y_train)
 print(f"Initial Loss: {initial_loss:.4f}")
 
-nn.gd(eta=1.5, epochs=500, x=X_train, y=Y_train, loss_out=50)
-print(nn.losses[1800], nn.losses[-1])
-print(f"Relative change over last 200 epochs: {(nn.losses[1800] - nn.losses[-1]) / nn.losses[1800]:.2%}")
+nn.gd(eta=1.0, epochs=50, x=X_train, y=Y_train, batch_size = 128, loss_out=5)
+print(nn.losses[45], nn.losses[-1])
+print(f"Relative change over last 5 epochs: {(nn.losses[45] - nn.losses[-1]) / nn.losses[45]:.2%}")
 plt.plot(nn.losses, label='Training Loss')
 plt.yscale("log") # to show slow decline better, not very visible
 plt.xlabel("epoch")
