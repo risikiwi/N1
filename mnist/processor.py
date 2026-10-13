@@ -59,8 +59,8 @@ class neural_network(object):
                 b[layer] -= eta * db[layer]
             l = self.loss(a, y)
             self.losses.append(l)
-            if loss_out and epoch % loss_out == 0:
-                print(f"Epoch {epoch}: loss = {l:.4f}")
+            if loss_out and (epoch + 1) % loss_out == 0:
+                print(f"Epoch {epoch+1}: loss = {l:.4f}")
         return a[-1]
 
 

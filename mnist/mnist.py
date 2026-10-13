@@ -1,7 +1,8 @@
-import numpy as np
 import ssl
 import time
+import numpy as np
 from sklearn.datasets import fetch_openml
+
 from processor import neural_network
 
 start_time = time.perf_counter()
@@ -23,11 +24,11 @@ Y_train, Y_test = Y[:60000], Y[60000:]
 y_test = y[60000:]
 
 # build and train
-nn = neural_network([784, 63, 10])
+nn = neural_network([784, 64, 10])
 initial_loss = nn.loss(nn.feed_forward(X_train), Y_train)
 print(f"Initial Loss: {initial_loss:.4f}")
 
-nn.gd(eta=1.0, epochs=500, x=X_train, y=Y_train, loss_out=50)
+nn.gd(eta=1.5, epochs=500, x=X_train, y=Y_train, loss_out=50)
 
 # evaluation
 train_pred = np.argmax(nn.feed_forward(X_train)[-1], axis=1)
