@@ -2,6 +2,7 @@ import ssl
 import time
 import numpy as np
 from sklearn.datasets import fetch_openml
+import matplotlib.pyplot as plt
 
 from processor import neural_network
 
@@ -29,6 +30,13 @@ initial_loss = nn.loss(nn.feed_forward(X_train), Y_train)
 print(f"Initial Loss: {initial_loss:.4f}")
 
 nn.gd(eta=1.5, epochs=500, x=X_train, y=Y_train, loss_out=50)
+print(nn.losses[1800], nn.losses[-1])
+print(f"Relative change over last 200 epochs: {(nn.losses[1800] - nn.losses[-1]) / nn.losses[1800]:.2%}")
+plt.plot(nn.losses, label='Training Loss')
+plt.yscale("log") # to show slow decline better, not very visible
+plt.xlabel("epoch")
+plt.ylabel("loss")
+plt.show()
 
 # evaluation
 train_pred = np.argmax(nn.feed_forward(X_train)[-1], axis=1)
