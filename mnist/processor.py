@@ -1,3 +1,4 @@
+import json
 import numpy as np
 
 
@@ -72,7 +73,22 @@ class neural_network(object):
             self.losses.append(l)
             if loss_out and (epoch + 1) % loss_out == 0:
                 print(f"Epoch {epoch+1}: loss = {l:.4f}")
-        return a[-1]
+        return a
+
+
+    def export_network(self, activations, path="weights.json"):
+        """
+        weights shape (# input, # output)
+        bias shape (1, # output)
+        """
+        out = {"activations":activations, "layers": []}
+        for w, b in zip(self.weights, self.biases):
+            out["layers"].append({
+                "W": np.round(w.T, 4).tolist(),
+                "b": np.round(b, 4).flatten().tolist(),
+            })
+        with open(path, "w") as f:
+            json.dump(out, f)
 
 
 
