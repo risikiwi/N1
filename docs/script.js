@@ -38,7 +38,16 @@ function forward(input) {
 function argmax(arr) {
     return arr.indexOf(Math.max(...arr));
 }
+// verify with values in tests.json
+async function selfTest() {
+    const tests = await (await fetch("tests.json")).json();
+    for (let i = 0; i < tests.inputs.length; i++) {
+        let x = tests.inputs[i];
+        const out = forward(x).at(-1);
+        console.log('sample ${i}: JS: ${argmax(out)}, Python: ${tests.predictions[i]}');
+    }
+}
 
 
 
-loadModel();
+loadModel().then(selfTest);
