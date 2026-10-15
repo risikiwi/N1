@@ -44,10 +44,9 @@ async function selfTest() {
     for (let i = 0; i < tests.inputs.length; i++) {
         let x = tests.inputs[i];
         const out = forward(x).at(-1);
-        console.log('sample ${i}: JS: ${argmax(out)}, Python: ${tests.predictions[i]}');
+        console.log(`sample ${i}: JS says ${argmax(out)}, Python said ${tests.predictions[i]}`);
     }
 }
 
-
-
 loadModel().then(selfTest);
+
